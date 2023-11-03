@@ -24,7 +24,7 @@ class _PhotoPainterPageState extends State<PhotoPainterPage> {
   late PainterController controller;
   ui.Image? backgroundImage;
   Paint shapePaint = Paint()
-    ..strokeWidth = 5
+    ..strokeWidth = 4
     ..color = Colors.red
     ..style = PaintingStyle.stroke
     ..strokeCap = StrokeCap.round;
@@ -45,11 +45,11 @@ class _PhotoPainterPageState extends State<PhotoPainterPage> {
         settings: PainterSettings(
             text: TextSettings(
               focusNode: textFocusNode,
-              textStyle: TextStyle(fontWeight: FontWeight.bold, color: red, fontSize: 18),
+              textStyle: TextStyle(fontWeight: FontWeight.bold, color: red, fontSize: 14),
             ),
             freeStyle: FreeStyleSettings(
               color: red,
-              strokeWidth: 5,
+              strokeWidth: 4,
             ),
             shape: ShapeSettings(
               paint: shapePaint,
