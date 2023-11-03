@@ -68,6 +68,12 @@ class PhotoActionBottomView extends StatelessWidget {
     onUpdate?.call();
   }
 
+  void removeSelectedDrawable() {
+    final selectedDrawable = controller.selectedObjectDrawable;
+    if (selectedDrawable != null) controller.removeDrawable(selectedDrawable);
+    onUpdate?.call();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -100,6 +106,15 @@ class PhotoActionBottomView extends StatelessWidget {
                   color: controller.freeStyleMode == FreeStyleMode.erase ? _primaryColor : Colors.white,
                 ),
                 onPressed: toggleFreeStyleErase,
+              ),
+
+              // Free-style eraser
+              IconButton(
+                icon: const Icon(
+                  PhosphorIcons.trash,
+                  color: Colors.white,
+                ),
+                onPressed: removeSelectedDrawable,
               ),
             ],
           ),

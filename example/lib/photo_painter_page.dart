@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:example/photo_action_bottom.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +7,8 @@ import 'package:flutter_painter/flutter_painter.dart';
 import 'dart:ui' as ui;
 
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+
+import 'main.dart';
 
 class PhotoPainterPage extends StatefulWidget {
   final String imgUrl;
@@ -75,7 +79,26 @@ class _PhotoPainterPageState extends State<PhotoPainterPage> {
     });
   }
 
-  void _saveImage() {}
+  void _saveImage() {
+    if (backgroundImage == null) return;
+    final backgroundImageSize = Size(backgroundImage!.width.toDouble(), backgroundImage!.height.toDouble());
+
+    // Render the image
+    // Returns a [ui.Image] object, convert to to byte data and then to Uint8List
+    final imageFuture =
+        controller.renderImage(backgroundImageSize).then<Uint8List?>((ui.Image image) => image.pngBytes);
+
+    // From here, you can write the PNG image data a file or do whatever you want with it
+    // For example:
+    // ```dart
+    // final file = File('${(await getTemporaryDirectory()).path}/img.png');
+    // await file.writeAsBytes(byteData.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
+    // ```
+    // I am going to display it using Image.memory
+
+    // Show a dialog with the image
+    showDialog(context: context, builder: (context) => RenderedImageDialog(imageFuture: imageFuture));
+  }
 
   @override
   Widget build(BuildContext context) {
