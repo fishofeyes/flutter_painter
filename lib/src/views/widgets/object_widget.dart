@@ -864,9 +864,9 @@ class _ObjectControlBox extends StatelessWidget {
   /// By default, it will be a [BoxShape.rectangle] shape and not active.
   const _ObjectControlBox({
     Key? key,
-    this.shape = BoxShape.rectangle,
+    this.shape = BoxShape.circle,
     this.active = false,
-    this.inactiveColor = Colors.white,
+    this.inactiveColor = Colors.blue,
     this.activeColor,
     this.shadowColor = Colors.black,
   }) : super(key: key);
@@ -881,6 +881,7 @@ class _ObjectControlBox extends StatelessWidget {
       decoration: BoxDecoration(
         color: active ? activeColor : inactiveColor,
         shape: shape,
+        border: Border.all(color: Colors.white),
         boxShadow: [
           BoxShadow(
             color: shadowColor,

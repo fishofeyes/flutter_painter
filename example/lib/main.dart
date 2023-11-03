@@ -1,6 +1,8 @@
 import 'dart:typed_data';
 import 'dart:ui';
 
+import 'package:example/photo_painter_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_painter/flutter_painter.dart';
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Flutter Painter Example",
-      theme: ThemeData(primaryColor: Colors.brown),
+      theme: ThemeData(primaryColor: Colors.blue),
       home: const FlutterPainterExample(),
     );
   }
@@ -88,6 +90,9 @@ class _FlutterPainterExampleState extends State<FlutterPainterExample> {
             shape: ShapeSettings(
               paint: shapePaint,
             ),
+            object: ObjectSettings(
+              enlargeControlsResolver: () => false,
+            ),
             scale: const ScaleSettings(
               enabled: true,
               minScale: 1,
@@ -103,7 +108,7 @@ class _FlutterPainterExampleState extends State<FlutterPainterExample> {
   /// to use it as a background
   void initBackground() async {
     // Extension getter (.image) to get [ui.Image] from [ImageProvider]
-    final image = await const NetworkImage('https://picsum.photos/1920/1080/').image;
+    final image = await const NetworkImage('https://picsum.photos/300/300/').image;
 
     setState(() {
       backgroundImage = image;
@@ -507,6 +512,9 @@ class _FlutterPainterExampleState extends State<FlutterPainterExample> {
   }
 
   void renderAndDisplayImage() {
+    Navigator.push(
+        context, CupertinoPageRoute(builder: (_) => PhotoPainterPage(imgUrl: 'https://picsum.photos/300/300/')));
+    return;
     if (backgroundImage == null) return;
     final backgroundImageSize = Size(backgroundImage!.width.toDouble(), backgroundImage!.height.toDouble());
 
