@@ -28,7 +28,7 @@ The example is hosted [here](https://flutter-painter.web.app) if you want to try
 A video recording showing the example running:
 
 <img src="https://github.com/omarhurani/flutter_painter/blob/1.0.1/example/flutter_painter_example.gif?raw=true" alt="Flutter Painter Video Demo" height=800px/>
-<img src='截图.jpeg'>
+<img src='截图.jpeg' width=400px>
 
 
 ## Usage
