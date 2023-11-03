@@ -166,6 +166,7 @@ class PhotoActionBottomView extends StatelessWidget {
                   (e) => GestureDetector(
                     onTap: () {
                       controller.freeStyleColor = e;
+                      controller.textStyle = TextStyle(color: e, fontSize: 16);
                       controller.shapePaint = controller.shapePaint?.copyWith(color: e);
                       onChooseColor?.call(e);
                     },
