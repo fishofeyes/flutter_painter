@@ -28,6 +28,8 @@ The example is hosted [here](https://flutter-painter.web.app) if you want to try
 A video recording showing the example running:
 
 <img src="https://github.com/omarhurani/flutter_painter/blob/1.0.1/example/flutter_painter_example.gif?raw=true" alt="Flutter Painter Video Demo" height=800px/>
+<img src='截图.jpeg'>
+
 
 ## Usage
 First, you'll need a `PainterController` object. The `PainterController` controls the different drawables, the background you're drawing on and provides the `FlutterPainter` widget with the settings it needs. Then, in your UI, use the `FlutterPainter` widget with the controller assigned to it.
